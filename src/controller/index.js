@@ -1,8 +1,10 @@
-const combineRouters = require('koa-combine-routers');
-const BootController = require('./BootController');
+const compose = require('koa-compose');
+const bootController = require('./BootController');
+const mapperController = require('./MapperController');
 
-const controller = combineRouters(
-    BootController
-);
+let c = compose([
+    bootController.routes(),
+    mapperController.routes(),
+]);
 
-module.exports = controller;
+module.exports = c;

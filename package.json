@@ -4,9 +4,9 @@
   },
   "dependencies": {
     "koa": "^2.11.0",
-    "koa-combine-routers": "^4.0.2",
+    "koa-compose": "^4.1.0",
     "koa-logger": "^3.2.1",
-    "koa-router": "^8.0.8",
+    "koa-mapper": "^1.0.0",
     "moment": "^2.24.0"
   }
 }

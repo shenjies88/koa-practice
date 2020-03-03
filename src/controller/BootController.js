@@ -1,14 +1,14 @@
-const Router = require('koa-router');
 const httpResult = require('../common/HttpResult');
+const Mapper = require('koa-mapper');
 
-const controller = new Router();
+const mapper = new Mapper.default();
 
-controller.get('/', ctx => {
+mapper.get('/', (ctx) => {
     ctx.body = httpResult.success('hello world');
 });
 
-controller.get('/boot', ctx => {
+mapper.get('/boot', (ctx) => {
     ctx.body = httpResult.success('boot');
 });
 
-module.exports = controller;
+module.exports = mapper;
