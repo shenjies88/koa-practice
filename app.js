@@ -17,4 +17,4 @@ app.use(logger((str) => {                // 使用日志中间件
 app.use(controller.routes());
 
 app.listen(appConfig.port);
-console.log('服务启动成功');
+console.log(`服务启动成功 监听 ：${appConfig.port}`);
