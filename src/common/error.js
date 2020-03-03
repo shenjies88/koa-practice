@@ -5,7 +5,7 @@ module.exports = async (ctx, next) => {
         // will only respond with JSON
         ctx.status = err.statusCode || err.status || 500;
         ctx.body = {
-            message: err.message
+            message: err.message || '服务器出现未知错误'
         };
     }
 };

@@ -1,15 +1,17 @@
 const Koa = require('koa');
-const logger = require('./src/logger');
-const error = require('./src/error');
-const all = require('./src/all');
+const appConfig = require('./src/config/appConfig');
+const logger = require('./src/common/logger');
+const error = require('./src/common/error');
 
 const app = new Koa();
 
+//common
 app.use(error);
 app.use(logger);
-app.use(all);
+
+//routers
 app.use(async ctx => {
     ctx.body = 'Hello World';
 });
 
-app.listen(3000);
+app.listen(appConfig.port);
