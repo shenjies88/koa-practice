@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const appConfig = require('./src/config/appConfig');
 const logger = require('./src/common/logger');
-const error = require('./src/common/error');
+const error = require('./src/common/errorController');
 
 const app = new Koa();
 
@@ -12,6 +12,7 @@ app.use(logger);
 //routers
 app.use(async ctx => {
     ctx.body = 'Hello World';
+    throw new Error();
 });
 
 app.listen(appConfig.port);
