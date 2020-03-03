@@ -9,6 +9,15 @@ mapper.put('/user', {
     ctx.body = httpResult.success();
 });
 
+mapper.delete('/user/:id', {
+    params: {
+        id: {type: 'number', in: 'path'}
+    }
+}, async (ctx) => {
+    await userService.deleted(ctx.params.id);
+    ctx.body = httpResult.success();
+});
+
 mapper.post('/user', {
     body: 'UserUpdateVo'
 }, async (ctx) => {

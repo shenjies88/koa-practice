@@ -4,6 +4,10 @@ async function create({name, age}) {
     await mysqlPool.execute('insert into user (name,age) values (?,?)', [name, age]);
 }
 
+async function deleted(id) {
+    await mysqlPool.execute('delete from user where id = ?', [id]);
+}
+
 async function update({name, age, id}) {
     let sql = `update user set`;
     if (name) {
@@ -25,6 +29,7 @@ async function detail(id) {
 
 module.exports = {
     create,
+    deleted,
     update,
     detail
 };
