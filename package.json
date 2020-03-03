@@ -1,8 +1,12 @@
 {
   "scripts": {
-    "serve": "node app.js"
+    "dev": "node app.js"
   },
   "dependencies": {
-    "koa": "^2.11.0"
+    "koa": "^2.11.0",
+    "koa-combine-routers": "^4.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^8.0.8",
+    "moment": "^2.24.0"
   }
 }
