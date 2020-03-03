@@ -1,4 +1,4 @@
-const httpResult = require('./httpResult');
+const httpResult = require('./HttpResult');
 
 module.exports = async (ctx, next) => {
     try {
