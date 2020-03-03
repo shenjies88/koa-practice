@@ -23,6 +23,7 @@ app.use(logger((str) => {                // 使用日志中间件
     console.log(Moment().format('YYYY-MM-DD HH:mm:ss') + str);
 }));
 app.use(controller.routes());
+app.use(controller.allowedMethods());
 
 app.listen(appConfig.port);
 console.log(`服务启动成功 监听 ：${appConfig.port}`);

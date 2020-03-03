@@ -5,7 +5,7 @@ function httpResult(state, msg, data) {
 }
 
 module.exports = {
-    success: (data) => {
+    success: (data = null) => {
         return new httpResult(0, "success", data);
     },
     fail: (msg) => {

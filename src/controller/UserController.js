@@ -8,7 +8,7 @@ mapper.get('/user/:id', {
     }
 }, async (ctx) => {
     let [rows] = await userService.detail(ctx.params.id);
-    ctx.body = httpResult.success(rows);
+    ctx.body = httpResult.success(...rows);
 });
 
 mapper.put('/user', {
