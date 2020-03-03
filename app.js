@@ -7,14 +7,14 @@ const errorController = require('./src/common/ErrorController');
 
 const app = new Koa();
 
+//common
+app.use(errorController);
+
 //third party
 app.use(logger((str) => {                // 使用日志中间件
     console.log(Moment().format('YYYY-MM-DD HH:mm:ss') + str);
 }));
-app.use(controller);
-
-//common
-app.use(errorController);
+app.use(controller.routes());
 
 app.listen(appConfig.port);
 console.log('服务启动成功');

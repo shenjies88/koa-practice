@@ -1,5 +1,4 @@
-const Mapper = require('koa-mapper');
-const mapper = new Mapper.default();
+const mapper = require('./index');
 
 mapper.get('/users/:id', {
     params: {
@@ -22,5 +21,3 @@ mapper.define('User', {
     id: {type: 'number', required: true},
     name: {type: 'string', required: true}
 });
-
-module.exports = mapper;
