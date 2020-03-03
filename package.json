@@ -5,6 +5,7 @@
   "dependencies": {
     "@yfe/aop": "^0.1.0",
     "koa": "^2.11.0",
+    "koa-joi-swagger": "^1.1.1",
     "koa-logger": "^3.2.1",
     "koa-mapper": "^1.0.0",
     "moment": "^2.24.0",
