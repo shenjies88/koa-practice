@@ -4,7 +4,7 @@ const pool = mysql.createPool({host: 'localhost', user: 'root', password: 'passw
 const promisePool = pool.promise();
 console.log('数据库链接成功');
 
-aop.before(promisePool, 'execute', (sql, [param]) => {
+aop.before(promisePool, 'execute', (sql, param) => {
     console.debug(`SQL: ${sql}`);
     console.debug(`参数: ${param}`);
 });
