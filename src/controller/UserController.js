@@ -1,12 +1,14 @@
 const mapper = require('controller');
 const httpResult = require('common/HttpResult');
 const userService = require('service/UserService');
+
 mapper.get('/user/:id', {
     params: {
-        id: {type: 'number'}
+        id: {type: 'number', in: 'path'}
     }
-}, (ctx) => {
-    ctx.body = ctx.params;
+}, async (ctx) => {
+    let [rows] = await userService.detail(ctx.params.id);
+    ctx.body = httpResult.success(rows);
 });
 
 mapper.put('/user', {
