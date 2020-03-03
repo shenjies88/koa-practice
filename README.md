@@ -6,3 +6,4 @@ Koa.js简单实践
 - koa-mapper 请求对象映射
 - mysql2 dao层
 - node-require-alias 路径别名
+- @yfe/aop aop实现
