@@ -16,15 +16,12 @@ const controller = require('controller');
 const appConfig = require('config/AppConfig');
 const errorController = require('common/ErrorController');
 const mixedDoc = require('swagger');
+const server = require('socket.io');
 
 const app = new Koa();
 
 //common
 app.use(errorController);
-
-//static
-app.use(require('koa-static')('.'));
-
 
 //logger
 app.use(logger((str) => {                // 使用日志中间件
@@ -39,6 +36,11 @@ app.use(ui(swaggerDoc, {pathRoot: '/swagger'}));
 app.use(controller.routes());
 app.use(controller.allowedMethods());
 
+//socket.io
+const io = server(app);
+io.on('connection', function (socket) {
+    console.log('a user connected');
+});
 
 app.listen(appConfig.port);
 console.log(`服务启动成功 监听 ：${appConfig.port}`);
