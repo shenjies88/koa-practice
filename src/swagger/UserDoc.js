@@ -1,6 +1,6 @@
 const JoiSwagger = require('koa-joi-swagger');
 const Joi = JoiSwagger.default.Joi;
-const {api, pageApi, pageQuery} = require('swagger/utils');
+const {api, pageApi, pageQuery, pathId} = require('swagger/utils');
 
 const CreateVo = Joi.object().json().keys({
     name: Joi.string().required().description('姓名'),
@@ -22,20 +22,6 @@ const ListPageItemVo = Joi.object().json().keys({
     id: Joi.number().integer().description('id'),
     name: Joi.string().description('姓名'),
     age: Joi.number().integer().description('年龄'),
-});
-
-// const PostLite = PostCreate.concat(Joi.object().json().keys({
-//     _id: Joi.string().force().required().description('_id'),
-//     url: Joi.string().uri(),
-//     read_count: Joi.number().integer(),
-// }))
-//
-// const Post = PostLite.concat(Joi.object().json().keys({
-//     content: Joi.string().required().description('内容(html)'),
-// }))
-//
-const pathId = (msg = 'path id') => Joi.object().keys({
-    id: Joi.number().integer().required().description(msg),
 });
 
 module.exports = {

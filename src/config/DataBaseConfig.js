@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('koa', 'root', 'password', {
-    host: '10.168.1.20',
+    host: 'localhost',
     dialect: 'mysql',
     timezone: '+08:00',
     pool: {
