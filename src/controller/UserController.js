@@ -43,8 +43,8 @@ mapper.post('/user-list-page', {
 mapper.schema('UserPageReqVo: PageReqVo', {});
 
 mapper.schema('UserCreateVo', {
-    name: {type: 'string'},
-    age: {type: 'number'}
+    name: {type: 'string', required: true},
+    age: {type: 'number', required: true}
 });
 
 mapper.schema('UserUpdateVo', {
