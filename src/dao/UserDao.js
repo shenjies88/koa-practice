@@ -26,7 +26,7 @@ async function deleted(id) {
     });
 }
 
-async function update({name, age, id}) {
+async function update(id, {name, age}) {
     await UserDo.update({name, age}, {
         where: {
             id

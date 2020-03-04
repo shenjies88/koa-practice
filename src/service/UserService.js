@@ -9,8 +9,8 @@ async function deleted(id) {
     await userDao.deleted(id);
 }
 
-async function update(param) {
-    await userDao.update(param);
+async function update(id, param) {
+    await userDao.update(id, param);
 }
 
 async function detail(id) {
