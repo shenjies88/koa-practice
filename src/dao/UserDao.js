@@ -35,7 +35,7 @@ async function update({name, age, id}) {
 }
 
 async function detail(id) {
-    return UserDo.findAll({
+    return UserDo.findOne({
         attributes: ['id', 'name', 'age'],
         where: {
             id
@@ -43,9 +43,19 @@ async function detail(id) {
     })
 }
 
+async function pageList({offset, limit}) {
+    return UserDo.findAndCountAll({
+        attributes: ['id', 'name', 'age'],
+        offset,
+        limit,
+        order: [['id', 'DESC']]
+    })
+}
+
 module.exports = {
     create,
     deleted,
     update,
-    detail
+    detail,
+    pageList
 };

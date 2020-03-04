@@ -7,7 +7,8 @@ require('node-require-alias').setAlias({
     'controller': path.join(__dirname, '/src/controller'),
     'common': path.join(__dirname, '/src/common'),
     'config': path.join(__dirname, '/src/config'),
-    'dao': path.join(__dirname, '/src/dao')
+    'dao': path.join(__dirname, '/src/dao'),
+    'utils': path.join(__dirname, '/src/utils')
 });
 const controller = require('controller');
 const appConfig = require('config/AppConfig');

@@ -30,9 +30,17 @@ mapper.get('/user/:id', {
         id: {type: 'number', in: 'path'}
     }
 }, async (ctx) => {
-     let rows = await userService.detail(ctx.params.id);
-    ctx.body = httpResult.success(...rows);
+    ctx.body = httpResult.success(await userService.detail(ctx.params.id));
 });
+
+mapper.post('/user-list-page', {
+    body: 'UserPageReqVo'
+}, async (ctx) => {
+    ctx.body = httpResult.success(await userService.pageList(ctx.request.body));
+});
+
+
+mapper.schema('UserPageReqVo', {});
 
 mapper.schema('UserCreateVo', {
     name: {type: 'string'},
