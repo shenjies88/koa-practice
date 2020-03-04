@@ -52,6 +52,5 @@ mapper.schema('UserCreateVo', {
 
 mapper.schema('UserUpdateVo', {
     id: {type: 'number', required: true},
-    name: {type: 'string'},
-    age: {type: 'number'}
+    name: {type: 'string'}
 });
