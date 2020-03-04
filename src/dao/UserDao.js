@@ -1,31 +1,47 @@
-const mysqlPool = require('config/DataBaseConfig');
+const Sequelize = require('sequelize');
+const sequelize = require('config/DataBaseConfig');
+
+const UserDo = sequelize.define('user', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING
+    },
+    age: {
+        type: Sequelize.INTEGER
+    }
+});
 
 async function create({name, age}) {
-    await mysqlPool.execute('insert into user (name,age) values (?,?)', [name, age]);
+    await UserDo.create({name, age});
 }
 
 async function deleted(id) {
-    await mysqlPool.execute('delete from user where id = ?', [id]);
+    await UserDo.destroy({
+        where: {
+            id
+        }
+    });
 }
 
 async function update({name, age, id}) {
-    let sql = `update user set`;
-    if (name) {
-        sql = sql + ' ,name = ?';
-    }
-    if (age) {
-        sql = sql + ' ,age = ?'
-    }
-    let reg = /[,]{1}/;
-    sql = sql.replace(reg, "");
-    sql = sql + ' where id = ?';
-    await mysqlPool.execute(sql, [name, age, id]);
+    await UserDo.update({name, age}, {
+        where: {
+            id
+        }
+    });
 }
 
 async function detail(id) {
-    return mysqlPool.execute('select id , name , age from user where id = ?', [id]);
+    return UserDo.findAll({
+        attributes: ['id', 'name', 'age'],
+        where: {
+            id
+        }
+    })
 }
-
 
 module.exports = {
     create,

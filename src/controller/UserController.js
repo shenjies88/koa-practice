@@ -30,7 +30,7 @@ mapper.get('/user/:id', {
         id: {type: 'number', in: 'path'}
     }
 }, async (ctx) => {
-    let [rows] = await userService.detail(ctx.params.id);
+     let rows = await userService.detail(ctx.params.id);
     ctx.body = httpResult.success(...rows);
 });
 

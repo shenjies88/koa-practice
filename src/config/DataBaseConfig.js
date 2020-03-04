@@ -1,11 +1,19 @@
-const mysql = require('mysql2');
-const aop = require("@yfe/aop");
-const pool = mysql.createPool({host: 'localhost', user: 'root', password: 'password', database: 'koa'});
-const promisePool = pool.promise();
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('koa', 'root', 'password', {
+    host: '10.168.1.20',
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+    define: {
+        timestamps: false,
+        freezeTableName: true,
+    }
+});
+
 console.log('数据库链接成功');
 
-aop.before(promisePool, 'execute', (sql, param) => {
-    console.debug(`SQL: ${sql}`);
-    console.debug(`参数: ${param}`);
-});
-module.exports = promisePool;
+module.exports = sequelize;

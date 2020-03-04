@@ -3,13 +3,13 @@
     "dev": "node app.js"
   },
   "dependencies": {
-    "@yfe/aop": "^0.1.0",
     "koa": "^2.11.0",
     "koa-joi-swagger": "^1.1.1",
     "koa-logger": "^3.2.1",
     "koa-mapper": "^1.0.0",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
-    "node-require-alias": "^1.0.1"
+    "node-require-alias": "^1.0.1",
+    "sequelize": "^5.21.5"
   }
 }
