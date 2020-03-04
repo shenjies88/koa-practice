@@ -22,6 +22,10 @@ const app = new Koa();
 //common
 app.use(errorController);
 
+//static
+app.use(require('koa-static')('.'));
+
+
 //logger
 app.use(logger((str) => {                // 使用日志中间件
     console.log(Moment().format('YYYY-MM-DD HH:mm:ss') + str);
