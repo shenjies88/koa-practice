@@ -11,7 +11,7 @@ mapper.put('/user', {
 
 mapper.delete('/user/:id', {
     params: {
-        id: {type: 'number', in: 'path'}
+        id: {type: 'number', in: 'path', required: true}
     }
 }, async (ctx) => {
     await userService.deleted(ctx.params.id);
@@ -27,7 +27,7 @@ mapper.post('/user', {
 
 mapper.get('/user/:id', {
     params: {
-        id: {type: 'number', in: 'path'}
+        id: {type: 'number', in: 'path', required: true}
     }
 }, async (ctx) => {
     ctx.body = httpResult.success(await userService.detail(ctx.params.id));
@@ -40,7 +40,7 @@ mapper.post('/user-list-page', {
 });
 
 
-mapper.schema('UserPageReqVo', {});
+mapper.schema('UserPageReqVo: PageReqVo', {});
 
 mapper.schema('UserCreateVo', {
     name: {type: 'string'},
