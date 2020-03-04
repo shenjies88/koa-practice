@@ -7,7 +7,8 @@ Koa.js简单实践
 - mysql2 dao层
 - node-require-alias 路径别名
 - sequelize ORM
+- swagger API文档
 ## 使用
 - npm install
-- npm dev
+- npm start
 - localhost:3000/swagger
