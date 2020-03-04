@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const logger = require('koa-logger');
 const Moment = require("moment");
-const {toSwaggerDoc, mixedValidate, ui} = require('koa-joi-swagger');
+const {toSwaggerDoc, ui} = require('koa-joi-swagger');
 const path = require("path");
 require('node-require-alias').setAlias({
     'service': path.join(__dirname, '/src/service'),
@@ -30,9 +30,6 @@ app.use(logger((str) => {                // 使用日志中间件
 //swagger
 const swaggerDoc = toSwaggerDoc(mixedDoc);
 app.use(ui(swaggerDoc, {pathRoot: '/swagger'}));
-app.use(mixedValidate(mixedDoc, {
-    onError: e => console.log(e.details, e._object),
-}));
 
 //controller
 app.use(controller.routes());
