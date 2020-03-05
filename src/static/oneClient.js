@@ -54,10 +54,13 @@ module.exports = `<!doctype html>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
   $(function () {
-    var socket = io();
+    const socket = io();
+        socket.on('connect', () => {
+                console.log(socket.id);
+        });
     $('form').submit(function(e){
       e.preventDefault(); // prevents page reloading
-      socket.emit('chat message', $('#m').val());
+      socket.emit('chat message', $('#m').val(),2);
       $('#m').val('');
       return false;
     });
@@ -67,6 +70,7 @@ module.exports = `<!doctype html>
   });
 </script>
 <body>
+我是1号客户
 <ul id="messages"></ul>
 <form action="">
     <input id="m" autocomplete="off"/>

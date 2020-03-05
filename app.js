@@ -39,13 +39,18 @@ app.use(ui(swaggerDoc, {pathRoot: '/swagger'}));
 app.use(controller.routes());
 app.use(controller.allowedMethods());
 
+
+let client = [];
 //socket.io
 io.on('connection', socket => {
-    console.log('socket连接成功');
-    socket.on('chat message', function (msg) {
-        console.log('message: ' + msg);
-        io.emit('chat message', msg);
-    });
+    client = [...client, socket];
+    socket.on('chat message', (msg, id) => {
+        if (id === 2) {
+            socket.to(client[1].id).emit('chat message', msg);
+        } else if (id === 1) {
+            socket.to(client[0].id).emit('chat message', msg);
+        }
+    })
 });
 
 server.listen(appConfig.port, () => {
