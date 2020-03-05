@@ -13,3 +13,6 @@ Koa.js简单实践
 - npm install
 - npm start
 - localhost:3000/swagger
+## 实时通讯
+- localhost:3000/oneClient 客户端1
+- localhost:3000/twoClient 客户端2
