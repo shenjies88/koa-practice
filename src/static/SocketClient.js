@@ -1,4 +1,4 @@
-<!doctype html>
+module.exports = `<!doctype html>
 <html>
 <head>
     <title>Socket.IO chat</title>
@@ -51,14 +51,20 @@
     </style>
 </head>
 <script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-    let socket = io('http://localhost');
-    socket.on('connect', function () {
+  $(function () {
+    var socket = io();
+    $('form').submit(function(e){
+      e.preventDefault(); // prevents page reloading
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
     });
-    socket.on('event', function (data) {
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
     });
-    socket.on('disconnect', function () {
-    });
+  });
 </script>
 <body>
 <ul id="messages"></ul>
@@ -67,4 +73,4 @@
     <button>Send</button>
 </form>
 </body>
-</html>
+</html>`;

@@ -15,6 +15,4 @@ const sequelize = new Sequelize('koa', 'root', 'password', {
     }
 });
 
-console.log('数据库链接成功');
-
 module.exports = sequelize;
