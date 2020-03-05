@@ -8,6 +8,7 @@ Koa.js简单实践
 - node-require-alias 路径别名
 - sequelize ORM
 - swagger API文档
+- socket.io 实时通讯
 ## 使用
 - npm install
 - npm start
