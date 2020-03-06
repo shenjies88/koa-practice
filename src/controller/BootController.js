@@ -3,6 +3,10 @@ const socketClient = require('static/oneClient');
 const twoClient = require('static/twoClient');
 const mapper = require('./index');
 
+mapper.get('/', (ctx) => {
+    ctx.response.redirect('/swagger');
+});
+
 mapper.get('/oneClient', (ctx) => {
     ctx.body = socketClient;
 });
